@@ -74,6 +74,11 @@ jclass JniConstants::structTimevalClass;
 jclass JniConstants::structUcredClass;
 jclass JniConstants::structUtsnameClass;
 
+jclass JniConstants::zipEntryClass;
+jclass JniConstants::netlinkSocketAddressClass;
+jclass JniConstants::packetSocketAddressClass;
+jclass JniConstants::structGroupSourceReqClass;
+
 static jclass findClass(JNIEnv* env, const char* name) {
     ScopedLocalRef<jclass> localClass(env, env->FindClass(name));
     jclass result = reinterpret_cast<jclass>(env->NewGlobalRef(localClass.get()));
@@ -125,15 +130,20 @@ void JniConstants::init(JNIEnv* env) {
     socketClass = findClass(env, "java/net/Socket");
     socketImplClass = findClass(env, "java/net/SocketImpl");
     stringClass = findClass(env, "java/lang/String");
-    structAddrinfoClass = findClass(env, "libcore/io/StructAddrinfo");
-    structFlockClass = findClass(env, "libcore/io/StructFlock");
-    structGroupReqClass = findClass(env, "libcore/io/StructGroupReq");
-    structLingerClass = findClass(env, "libcore/io/StructLinger");
-    structPasswdClass = findClass(env, "libcore/io/StructPasswd");
-    structPollfdClass = findClass(env, "libcore/io/StructPollfd");
-    structStatClass = findClass(env, "libcore/io/StructStat");
-    structStatVfsClass = findClass(env, "libcore/io/StructStatVfs");
-    structTimevalClass = findClass(env, "libcore/io/StructTimeval");
-    structUcredClass = findClass(env, "libcore/io/StructUcred");
-    structUtsnameClass = findClass(env, "libcore/io/StructUtsname");
+    structAddrinfoClass = findClass(env, "android/system/StructAddrinfo");
+    structFlockClass = findClass(env, "android/system/StructFlock");
+    structGroupReqClass = findClass(env, "android/system/StructGroupReq");
+    structLingerClass = findClass(env, "android/system/StructLinger");
+    structPasswdClass = findClass(env, "android/system/StructPasswd");
+    structPollfdClass = findClass(env, "android/system/StructPollfd");
+    structStatClass = findClass(env, "android/system/StructStat");
+    structStatVfsClass = findClass(env, "android/system/StructStatVfs");
+    structTimevalClass = findClass(env, "android/system/StructTimeval");
+    structUcredClass = findClass(env, "android/system/StructUcred");
+    structUtsnameClass = findClass(env, "android/system/StructUtsname");
+
+    zipEntryClass = findClass(env, "java/util/zip/ZipEntry");
+    netlinkSocketAddressClass = findClass(env, "android/system/NetlinkSocketAddress");
+    packetSocketAddressClass = findClass(env, "android/system/PacketSocketAddress");
+    structGroupSourceReqClass = findClass(env, "android/system/StructGroupSourceReq");
 }

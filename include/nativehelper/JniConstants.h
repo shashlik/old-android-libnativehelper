@@ -91,6 +91,11 @@ struct JniConstants {
     static jclass structTimevalClass;
     static jclass structUcredClass;
     static jclass structUtsnameClass;
+
+    static jclass zipEntryClass;
+    static jclass netlinkSocketAddressClass;
+    static jclass packetSocketAddressClass;
+    static jclass structGroupSourceReqClass;
 };
 
 #define NATIVE_METHOD(className, functionName, signature) \
